@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import child_process from 'child_process';
 import Promise from 'bluebird';
 import fs from 'fs';
@@ -96,6 +97,19 @@ module.exports = {
   },
   escapePath: function (str) {
     return str.replace(/ /g, '\\ ').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+  },
+  getLogFontSize: function() {
+    return parseInt($('.logs').css('font-size'));
+  },
+  adjustLogFontSize: function(offset) {
+    var fontSize = this.getLogFontSize();
+    var newFontSize = (fontSize + offset) > 0 ? (fontSize + offset) : 1;
+    $('.logs').css('font-size', newFontSize);
+  },
+  resetLogFontSize: function() {
+    // according to container-logs.less, the default log font size is 12px
+    // but it appears to be overridden by another class to 10px
+    $('.logs').css('font-size', 10);
   },
   home: function () {
     return app.getPath('home');
