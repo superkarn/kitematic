@@ -160,6 +160,13 @@ var MenuTemplate = function () {
           click: function() {
             util.adjustLogFontSize(-2);
           }
+        },
+        {
+          label: 'Log Zoom Reset',
+          accelerator: util.CommandOrCtrl() + '+0',
+          click: function() {
+            util.resetLogFontSize();
+          }
         }
       ]
     },
